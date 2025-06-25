@@ -1,47 +1,17 @@
-# The Art of C++ : PEGTL (Parsing Expression Grammar Template Library)
+# Pixar PEGTL
 
-[PEGTL](https://github.com/taocpp/PEGTL) is a library for creating
-parsers according to a Parsing Expression Grammar.
+[![PyPi version](https://img.shields.io/pypi/v/pxr-pegtl-dev.svg?logo=pypi&label=PyPI&logoColor=gold)](https://pypi.python.org/pypi/pxr-pegtl-dev)
+[![CMake](https://img.shields.io/badge/CMake-3.21...3.31-blue.svg?logo=CMake&logoColor=blue)](https://cmake.org)
+[![License](https://img.shields.io/badge/License-TOST-yellow.svg)](https://github.com/untwine/pxr-pegtl/blob/main/LICENSE.txt)
 
-## Version
+Parsing Expression Grammar library used in OpenUSD.
 
-v3.2.7
+This repository is a decoupled version of the "pegtl" library from the
+[OpenUSD](https://graphics.pixar.com/usd/release/index.html) library, created
+by Pixar.
 
-## Setup
-
-Refer to the [Installing and Using](https://github.com/taocpp/PEGTL/blob/3.x/doc/Installing-and-Using.md)
-documentation
-
-## Copy headers
-
-1. Copy PEGTL-3.2.7/include/tao/... to pxr/base/pegtl/...
-
-2. Replace Macro Names
-
-Change macro names from TAO_PEGTL_ to PXR_PEGTL_.  You can do this in a
-bash-like shell with the following:
-
-`sed -i 's/TAO_PEGTL_/PXR_PEGTL_/g' $(find -name '[^.]*.[hc]pp')`
-
-3. Update CMakeLists.txt and any other build configuration files.
-
-You can get a full list of the header files by running:
-
-`find -type f`
-
-4. Update pxr/base/pegtl/pegtl/config.hpp
-
-This file defines the namespace name that PEGTL uses:
-
-```
-// Define PXR_PEGTL_NAMESPACE based on the internal namespace to isolate
-// it from other versions of USD/PEGTL in client code.
-#include "pxr/pxr.h"
-
-#if PXR_USE_NAMESPACES
-#define PXR_PEGTL_NAMESPACE PXR_INTERNAL_NS ## _pegtl
-#else
-#define PXR_PEGTL_NAMESPACE pxr_pegtl
-#endif
-```
-
+It is regularly rebased over the "release" branch of the original
+[repository](https://github.com/PixarAnimationStudios/OpenUSD) to provide
+explicit divergence information from the latest updates and is currently
+synchronized with
+[v25.05.01](https://github.com/PixarAnimationStudios/OpenUSD/releases/tag/v25.05.01).
